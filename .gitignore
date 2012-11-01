@@ -12,6 +12,16 @@ test/tmp
 test/version_tmp
 tmp
 
+db/*.sqlite3*
+log/*.log
+*.log
+/tmp/
+doc/
+*.swp
+*~
+.project
+.DS_Store
+
 # YARD artifacts
 .yardoc
 _yardoc
