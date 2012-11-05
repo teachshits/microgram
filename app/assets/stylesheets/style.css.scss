@@ -1,0 +1,43 @@
+@import "bootstrap" ;
+
+header {
+
+	margin-top:  1em;
+	background-color: aqua;
+	margin-bottom: 1em;
+}
+
+body {
+	background-color: #00ffdc;
+}
+
+#mainbody {
+	background-color: white;
+	text-align: center;
+}
+
+#title {
+	margin-top: 15px;
+	font-size: 36px;
+	text-align: center;
+}
+
+#author {
+	text-align: center;
+}
+
+#sidebar {
+	background-color: green;
+	/*border: 1px solid black;*/
+	border-radius: 10px;
+}
+
+nav li {
+	display: inline;
+	text-align: center;
+	padding: 5px 15px 5px 19px;
+}
+
+nav ul{
+	padding: 8px 0px 8px 0px;
+}
