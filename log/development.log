@@ -14,3 +14,8 @@ Started GET "/rails/info/properties" for 127.0.0.1 at 2012-11-01 19:54:52 +0400
 Processing by Rails::InfoController#properties as */*
   Rendered inline template (2.9ms)
 Completed 200 OK in 28ms (Views: 27.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/rails.png" for 127.0.0.1 at 2012-11-04 20:27:47 +0400
+Connecting to database specified by database.yml
+Served asset /rails.png - 200 OK (2ms)
