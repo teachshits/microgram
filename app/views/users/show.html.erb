@@ -1,3 +1,10 @@
-<h1>
-<%= @user.name %> <%= @user.email %>
-</h1>
+<aside class="offset8 span4">
+	<section>
+		<h6>
+			<%= gravatar_for @user %>		
+			<strong>Name:</strong> <%= @user.name %><br />
+			<strong>E-mail:</strong> <%= @user.email %> <br/>
+	      	<strong>URL:</strong>  <%= link_to user_path(@user), @user %>
+      	</h6>
+	</section>
+</aside>
