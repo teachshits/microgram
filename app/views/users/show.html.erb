@@ -1,22 +1,23 @@
-<div class="span8">
-    <% if @user.posts.any? %>
-      <h3>Posts (<%= @user.posts.count %>)</h3>
-      <ol class="posts">
-        <%= render @posts %>
-      </ol>
-      <%= will_paginate @posts %>
-    <% end %>
+<div class="row">
+  <div class="span8" style="background-color: red;">
+      <% if @user.posts.any? %>
+        <legend>Posts (<%= @user.posts.count %>)</legend>
+        <ol class="unstyled">
+          <%= render @posts %>
+        </ol>
+        <%= will_paginate @posts %>
+      <% end %>
+  </div>
+  <aside class="span4" style="background-color: white;">
+  	<section>
+  		<h6>
+  			<%= gravatar_for @user %>		
+  			<strong>Name:</strong> <%= @user.name %><br />
+  			<strong>E-mail:</strong> <%= @user.email %> <br/>
+  	    <strong>URL:</strong>  <%= link_to user_path(@user), @user %>
+      </h6>
+  	</section>
+  </aside>
+
 </div>
-
-
-<aside class="offset8 span4">
-	<section>
-		<h6>
-			<%= gravatar_for @user %>		
-			<strong>Name:</strong> <%= @user.name %><br />
-			<strong>E-mail:</strong> <%= @user.email %> <br/>
-	      	<strong>URL:</strong>  <%= link_to user_path(@user), @user %>
-      	</h6>
-	</section>
-</aside>
 

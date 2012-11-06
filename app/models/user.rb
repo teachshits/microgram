@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :name
 
   has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   before_save { self.email.downcase }  # сохраняем емэйл в нижнем регистре перед сохранением в БД ()
   before_save :create_remember_token
@@ -11,6 +12,7 @@ class User < ActiveRecord::Base
   validates :name, presence: true, length: {maximum: 50}
   validates :email, presence: true, format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false} 
 
+  self.per_page = 10
   def self.authenticate(email)
   	user = find_by_email(email)
   	if user.nil? 

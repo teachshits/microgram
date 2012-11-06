@@ -2,15 +2,17 @@ class Post < ActiveRecord::Base
   attr_accessible :image, :question
 
   belongs_to :user
-  validates :user_id, presence: true
-	mount_uploader :image, ImageUploader
+  has_many :comments
 
+  	validates :user_id, presence: true
 	validates :question, presence: true, length: { maximum: 140 }
 	validates :image, presence: true
-  	validates :user_id, presence: true
 
+	mount_uploader :image, ImageUploader
+  	
+self.per_page = 10
 
-default_scope :order => 'posts.created_at DESC'
+default_scope order: 'posts.created_at DESC'
 scope :from_all_users, lambda { |user| followed_by(user) }
 
 private

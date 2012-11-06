@@ -1,7 +1,7 @@
 <%= form_for(@post, html: {multipart: true}) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
-    <%= f.text_area :question, placeholder: "What is your question?" %>
+    <%= f.text_area :question, placeholder: "What is your question?", id: "message_area", rows: 2 %>
   </div>
   <%= f.file_field :image%>
   <%= f.submit "Post", class: "btn btn-large btn-primary" %>

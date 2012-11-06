@@ -1,7 +1,7 @@
    
 <% if signed_in? %>
-  	<div class="row">
-    	<aside class="span4">
+  <div class="row">
+    	<aside class="span4" style="background-color:red">
       		<section>
         		<%= render 'shared/user_info' %>
       		</section>
@@ -9,17 +9,17 @@
         		<%= render 'shared/post_form' %>
       		</section>
     	</aside>
-  	</div>
+      <div class="span8" style="background-color:orange">
+        <h3>Micropost Feed</h3>
+        <%= render 'shared/feed' %>
+      </div>
+  </div>
 
-  	<div class="span8">
-      	<h3>Micropost Feed</h3>
-      	<%= render 'shared/feed' %>
-   	</div>
+  	
 <% else %>
+  <div id="welcome">
     <h1>Microgram</h1>
-    <p>
-      	This is the home page
-    </p>
+    <p>This is the home page</p>
     <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
-
+  </div>
 <% end %> 

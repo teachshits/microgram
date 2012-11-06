@@ -21,9 +21,18 @@ body {
 	background-color: #00ffdc;
 }
 
-#mainbody {
-	background-color: white;
-	text-align: center;
+
+h1 {
+  text-align: center;
+}
+
+.timestamp
+{
+  font-style: italic;
+}
+
+#welcome {
+  text-align: center;
 }
 
 #title {
@@ -44,6 +53,11 @@ nav li {
 
 nav ul{
 	padding: 8px 0px 8px 0px;
+}
+
+/*footer*/
+footer li {
+  padding: 0px 10px 0px 10px;
 }
 
 /*sidebar*/
@@ -97,7 +111,7 @@ input, textarea, select, .uneditable-input {
 /* users index */
 
 #users {
-  list-style: none;
+  
   margin: 0;
   li {
     overflow: auto;
@@ -108,7 +122,6 @@ input, textarea, select, .uneditable-input {
     }
   }
 }
-
 
 
 
