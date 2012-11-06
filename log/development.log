@@ -61393,3 +61393,488 @@ Served asset /application.js - 304 Not Modified (1ms)
 
 Started GET "/assets/parody.jpeg" for 127.0.0.1 at 2012-11-06 23:59:05 +0400
 Served asset /parody.jpeg - 304 Not Modified (0ms)
+Connecting to database specified by database.yml
+  [1m[36m (1.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20121105080404)
+Migrating to AddEmailUniquessIndex (20121105090508)
+Migrating to AddMigrationTokenToUsers (20121105163938)
+Migrating to AddAdminToUsers (20121106081306)
+Migrating to CreatePosts (20121106091201)
+Migrating to CreateComments (20121106154828)
+  [1m[35m (0.4ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("comments")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_comments_on_user_id_and_created_at')[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("posts")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_info('index_posts_on_user_id_and_created_at')[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("users")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_remember_token')[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_info('index_users_on_email')
+Connecting to database specified by database.yml
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (14.5ms)[0m  SELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('kyzon42@gmail.com') LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20121105080404)
+Migrating to AddEmailUniqunessIndex (20121105090508)
+Migrating to AddMigrationTokenToUsers (20121105163938)
+Migrating to AddAdminToUsers (20121106081306)
+Migrating to CreatePosts (20121106091201)
+Migrating to CreateComments (20121106154828)
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("comments")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_comments_on_user_id_and_created_at')[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("posts")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_info('index_posts_on_user_id_and_created_at')[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("users")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_remember_token')[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_info('index_users_on_email')
+Connecting to database specified by database.yml
+  [1m[36m (1.5ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (2.1ms)[0m  CREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "post_id" integer, "comm" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("comments")[0m
+  [1m[35m (1.8ms)[0m  CREATE INDEX "index_comments_on_user_id_and_created_at" ON "comments" ("user_id", "created_at")
+  [1m[36m (2.0ms)[0m  [1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "question" varchar(255), "image" varchar(255), "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("posts")
+  [1m[36m (1.9ms)[0m  [1mCREATE INDEX "index_posts_on_user_id_and_created_at" ON "posts" ("user_id", "created_at")[0m
+  [1m[35m (2.0ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "email" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "remember_token" varchar(255), "admin" boolean DEFAULT 'f') 
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35m (1.8ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_info('index_users_on_email')
+  [1m[36m (1.4ms)[0m  [1mCREATE INDEX "index_users_on_remember_token" ON "users" ("remember_token")[0m
+  [1m[35m (1.4ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35m (1.4ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (1.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20121106154828')
+  [1m[36m (2.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20121105080404')[0m
+  [1m[35m (1.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20121105090508')
+  [1m[36m (1.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20121105163938')[0m
+  [1m[35m (1.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20121106081306')
+  [1m[36m (1.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20121106091201')[0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('kyzon42@gmail.com') LIMIT 1
+  [1m[36mSQL (41.3ms)[0m  [1mINSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:47 UTC +00:00], ["email", "kyzon42@gmail.com"], ["name", "Admin"], ["remember_token", "PKran3USL1j6IW3TwEtu4g"], ["updated_at", Tue, 06 Nov 2012 23:14:47 UTC +00:00]]
+  [1m[35m (2.9ms)[0m  commit transaction
+  [1m[36mSQL (2.0ms)[0m  [1mUPDATE "users" SET "admin" = 't' WHERE "users"."id" = 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:47 UTC +00:00], ["email", "example@myexample.org"], ["name", "Example User"], ["remember_token", "JQ8kV-l7WPQI_3A-rXxWew"], ["updated_at", Tue, 06 Nov 2012 23:14:47 UTC +00:00]]
+  [1m[36m (2.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-1@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-1@myexample.org"], ["name", "Maci Roob"], ["remember_token", "3AYdvpXQLv8oDCP0azdWmQ"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (2.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-2@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-2@myexample.org"], ["name", "Alberta Kulas"], ["remember_token", "btZ_u2rvWDoKGcO4PtAQmA"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-3@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-3@myexample.org"], ["name", "Amos Thiel"], ["remember_token", "oMvshjFXRVYThsgwG4C-bQ"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (1.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-4@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-4@myexample.org"], ["name", "Maximillia Schuster"], ["remember_token", "bp5sL5AiBNRrEzKvSOrRrw"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (1.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-5@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-5@myexample.org"], ["name", "Mabelle Pfannerstill"], ["remember_token", "RTFm6_zt4oiKxHQothKiWw"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (2.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-6@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-6@myexample.org"], ["name", "Emmett Cummings"], ["remember_token", "Zv-uwrq0gg81InEL-gdr3A"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (1.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-7@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-7@myexample.org"], ["name", "Esmeralda Dietrich II"], ["remember_token", "yzYWU7BV1xqIgmkMTxjbVw"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (1.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-8@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-8@myexample.org"], ["name", "Mr. Narciso Towne"], ["remember_token", "oraeQ0-SHPlqDfzHR7ycGQ"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (1.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-9@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-9@myexample.org"], ["name", "Lawson Kiehn"], ["remember_token", "G1rWnb7ojNAg7FDgLTIPVA"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (1.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-10@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-10@myexample.org"], ["name", "Libbie Moore"], ["remember_token", "R8lrXbI6D7MRViVVlEBLpA"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (2.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-11@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-11@myexample.org"], ["name", "Lavada Klocko"], ["remember_token", "m5v_CsB8c_1CElLpN8W2OA"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (1.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-12@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-12@myexample.org"], ["name", "Dr. Stanley Lindgren"], ["remember_token", "wPO5gPf_1_ywDoAihHA-Lw"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (1.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-13@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-13@myexample.org"], ["name", "Wilfredo Altenwerth"], ["remember_token", "dR6Uur1MaxkZVD7oDO-keQ"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (1.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-14@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-14@myexample.org"], ["name", "Catharine Donnelly"], ["remember_token", "fr4gN--P1UOCplACpNTDKQ"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (1.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-15@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-15@myexample.org"], ["name", "Matt Bartoletti"], ["remember_token", "qz88Adn-l-13hYXOogEdgQ"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (1.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-16@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-16@myexample.org"], ["name", "Pablo Kilback"], ["remember_token", "dDCOAkgmAKuUuP3tgrYSLw"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (1.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-17@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-17@myexample.org"], ["name", "Ms. Austin Wiza"], ["remember_token", "ogmGiCYG0lliZxeBSURG2A"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (1.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-18@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-18@myexample.org"], ["name", "Kamren Hane Sr."], ["remember_token", "UD5DlL97xwRkpqUYLMCs6A"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (2.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-19@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-19@myexample.org"], ["name", "Otho Okuneva"], ["remember_token", "yaOadsnwm6735QovzqSgOw"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (1.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-20@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-20@myexample.org"], ["name", "Dr. Emerson Langworth"], ["remember_token", "sLjI3x_2piMsuy6pQSHIVQ"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (2.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-21@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-21@myexample.org"], ["name", "Ms. Giovanna Gottlieb"], ["remember_token", "CfSZ7Tq4giCESmP-_aoewQ"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (19.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-22@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-22@myexample.org"], ["name", "Edgardo Pouros"], ["remember_token", "nrmf9KDWRf39a6MQzCnyeQ"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (19.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-23@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-23@myexample.org"], ["name", "Josefa Gerlach I"], ["remember_token", "ZBdmnh8vEWdEqXjgYjksWg"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (16.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-24@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-24@myexample.org"], ["name", "Lexie Dicki IV"], ["remember_token", "Rc4It92CXxm_umNj6Jyrow"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (16.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-25@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-25@myexample.org"], ["name", "Micah Hartmann"], ["remember_token", "l7w2cdpie3cjkPJCv184fA"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (16.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-26@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-26@myexample.org"], ["name", "Dr. Mikel Mayert"], ["remember_token", "grCZGJ2Z49NcUoOp7BtmBg"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (16.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-27@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-27@myexample.org"], ["name", "Dr. Katharina Jerde"], ["remember_token", "9EQ0TmrlEgQorxh-rQL6Jw"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (16.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-28@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-28@myexample.org"], ["name", "Ms. Eden Mosciski"], ["remember_token", "HMznPPtRkWPaXWapZxb-XQ"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (16.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-29@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-29@myexample.org"], ["name", "Vickie Koss"], ["remember_token", "MUh0wzGYqAVk9SpYaXWvHg"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (17.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-30@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-30@myexample.org"], ["name", "Leila Jewess DVM"], ["remember_token", "HyGAb7WTILX2nOnOxPJmDQ"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (17.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-31@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-31@myexample.org"], ["name", "Lilla Bode"], ["remember_token", "yYpDGJL89v3NwjxpLUihxQ"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (17.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-32@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-32@myexample.org"], ["name", "Nikolas Wolff"], ["remember_token", "bDTWSQt-z7gRxKxjWh9hfQ"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (17.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-33@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-33@myexample.org"], ["name", "Dr. Oswald Feil"], ["remember_token", "CmvlXUiZ61u3dQRzOt_W7w"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (27.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-34@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-34@myexample.org"], ["name", "Mackenzie Heathcote"], ["remember_token", "faR4OMtWT40t6BcOLckzpg"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (26.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-35@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-35@myexample.org"], ["name", "Zora Bogan"], ["remember_token", "f40JTOR1S-VPIHfZfCotig"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (18.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-36@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-36@myexample.org"], ["name", "Ms. Adalberto Rempel"], ["remember_token", "rAx4n-mlvrfst7O_DQc4og"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (18.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-37@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-37@myexample.org"], ["name", "Ms. Victoria Lind"], ["remember_token", "SLaqCo_6sZuZQdnISdoMcA"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (26.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-38@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-38@myexample.org"], ["name", "Theodore Schoen"], ["remember_token", "BS7S89XI_fsovreX1dQE9w"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (16.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-39@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-39@myexample.org"], ["name", "Rory Dicki"], ["remember_token", "IewNZCaeRCdZHTHzwfh9Lg"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (7.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-40@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-40@myexample.org"], ["name", "Toy Brakus"], ["remember_token", "K6Gi8vZKbpqrnZ3tX-Hevw"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (9.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-41@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-41@myexample.org"], ["name", "Wilburn Hammes III"], ["remember_token", "QP_27VrYSfm_cMFqRy1vNQ"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (27.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-42@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-42@myexample.org"], ["name", "Beth Howe"], ["remember_token", "HL8OtZ1XXCzdAaCdYCq6OA"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (50.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-43@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-43@myexample.org"], ["name", "Jana Graham"], ["remember_token", "tcRGnJEHwjsSSMmRG6AeMg"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (16.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-44@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-44@myexample.org"], ["name", "Isai Price Jr."], ["remember_token", "fvd6KE-VcTiOEWvonYQVGA"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (27.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-45@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00], ["email", "example-45@myexample.org"], ["name", "Kurtis Bernier"], ["remember_token", "WgDhzN67SI44Mkt9FeiGUQ"], ["updated_at", Tue, 06 Nov 2012 23:14:48 UTC +00:00]]
+  [1m[36m (17.1ms)[0m  [1mcommit transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20121105080404)
+Migrating to AddEmailUniquenessIndex (20121105090508)
+Migrating to AddMigrationTokenToUsers (20121105163938)
+Migrating to AddAdminToUsers (20121106081306)
+Migrating to CreatePosts (20121106091201)
+Migrating to CreateComments (20121106154828)
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("comments")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_comments_on_user_id_and_created_at')[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("posts")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_info('index_posts_on_user_id_and_created_at')[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("users")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_remember_token')[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_info('index_users_on_email')
+Connecting to database specified by database.yml
+  [1m[36m (1.8ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (140.3ms)[0m  CREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "post_id" integer, "comm" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("comments")[0m
+  [1m[35m (2.8ms)[0m  CREATE INDEX "index_comments_on_user_id_and_created_at" ON "comments" ("user_id", "created_at")
+  [1m[36m (2.5ms)[0m  [1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "question" varchar(255), "image" varchar(255), "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("posts")
+  [1m[36m (3.2ms)[0m  [1mCREATE INDEX "index_posts_on_user_id_and_created_at" ON "posts" ("user_id", "created_at")[0m
+  [1m[35m (47.0ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "email" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "remember_token" varchar(255), "admin" boolean DEFAULT 'f') 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35m (25.9ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (0.2ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_users_on_email')
+  [1m[36m (8.3ms)[0m  [1mCREATE INDEX "index_users_on_remember_token" ON "users" ("remember_token")[0m
+  [1m[35m (12.8ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35m (5.7ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (9.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20121106154828')
+  [1m[36m (13.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20121105080404')[0m
+  [1m[35m (9.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20121105090508')
+  [1m[36m (7.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20121105163938')[0m
+  [1m[35m (12.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20121106081306')
+  [1m[36m (6.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20121106091201')[0m
+  [1m[35m (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('kyzon42@gmail.com') LIMIT 1
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00], ["email", "kyzon42@gmail.com"], ["name", "Admin"], ["remember_token", "s9ThTfI9fBeXN2m0iNWH-g"], ["updated_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00]]
+  [1m[35m (6.2ms)[0m  commit transaction
+  [1m[36mSQL (1.6ms)[0m  [1mUPDATE "users" SET "admin" = 't' WHERE "users"."id" = 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00], ["email", "example@myexample.org"], ["name", "Example User"], ["remember_token", "wM7CknhztvAXYUB23Gw2eg"], ["updated_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00]]
+  [1m[36m (2.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-1@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00], ["email", "example-1@myexample.org"], ["name", "Kevon Schamberger"], ["remember_token", "wU5cFrM_301VDKBD19ZS5g"], ["updated_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00]]
+  [1m[36m (2.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-2@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00], ["email", "example-2@myexample.org"], ["name", "Christa Morissette"], ["remember_token", "cqLCXNa3KV556Qd8bd1Tag"], ["updated_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00]]
+  [1m[36m (1.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-3@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00], ["email", "example-3@myexample.org"], ["name", "Cory Waelchi"], ["remember_token", "DhgLojfaMe_sEcAOVT7tnQ"], ["updated_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00]]
+  [1m[36m (1.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-4@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00], ["email", "example-4@myexample.org"], ["name", "Ivory Dooley"], ["remember_token", "SZzdfho0CQGc8YJMCodwng"], ["updated_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00]]
+  [1m[36m (1.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-5@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00], ["email", "example-5@myexample.org"], ["name", "Larue Koepp"], ["remember_token", "PNZiFnicTp2oJ6zBgQjUjw"], ["updated_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00]]
+  [1m[36m (1.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-6@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00], ["email", "example-6@myexample.org"], ["name", "Crystel Howell"], ["remember_token", "IGhY3P4zkmBr3wUmn_MX6A"], ["updated_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00]]
+  [1m[36m (1.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-7@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00], ["email", "example-7@myexample.org"], ["name", "Derrick O'Conner I"], ["remember_token", "-u3K-e1U2hzs_xYY8Alsgg"], ["updated_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00]]
+  [1m[36m (1.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-8@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00], ["email", "example-8@myexample.org"], ["name", "Miss Rhea White"], ["remember_token", "Qnwo5A7VOdLSXFouNrXdsw"], ["updated_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00]]
+  [1m[36m (2.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-9@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00], ["email", "example-9@myexample.org"], ["name", "Dedric Hagenes"], ["remember_token", "btB8E3J_3pXa13LunZVRtQ"], ["updated_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00]]
+  [1m[36m (1.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-10@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00], ["email", "example-10@myexample.org"], ["name", "Vita Murphy"], ["remember_token", "sCoVYZuU-4GdXTOyHKVxqg"], ["updated_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00]]
+  [1m[36m (1.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-11@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00], ["email", "example-11@myexample.org"], ["name", "Dr. London Lowe"], ["remember_token", "J9hiaEZLZzgsyNdpk_8ckQ"], ["updated_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00]]
+  [1m[36m (1.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-12@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00], ["email", "example-12@myexample.org"], ["name", "Kevin Hackett Jr."], ["remember_token", "aJDPQqYYLhxUWtg3osq9ZQ"], ["updated_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00]]
+  [1m[36m (1.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-13@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00], ["email", "example-13@myexample.org"], ["name", "Maci Zboncak"], ["remember_token", "kEHxKMBFr6u5SP1eCBQqmw"], ["updated_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00]]
+  [1m[36m (2.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-14@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00], ["email", "example-14@myexample.org"], ["name", "Mrs. Arch Mohr"], ["remember_token", "pL5fhxCPx_5q5-KIM_KFrw"], ["updated_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00]]
+  [1m[36m (1.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-15@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00], ["email", "example-15@myexample.org"], ["name", "Dr. Isabell Emard"], ["remember_token", "_yMnMphIX2coJQ6mj2zQkQ"], ["updated_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00]]
+  [1m[36m (1.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-16@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00], ["email", "example-16@myexample.org"], ["name", "Chloe Daugherty"], ["remember_token", "Wk5a-M0UDu_O-wHOouAQ5Q"], ["updated_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00]]
+  [1m[36m (1.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-17@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00], ["email", "example-17@myexample.org"], ["name", "Simeon Goldner"], ["remember_token", "x7X3FxmJj2fuPYTKJNO2ww"], ["updated_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00]]
+  [1m[36m (1.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-18@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00], ["email", "example-18@myexample.org"], ["name", "Ms. Seth Beahan"], ["remember_token", "ONmssh_sj2VBi5nV8marzw"], ["updated_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00]]
+  [1m[36m (1.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-19@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00], ["email", "example-19@myexample.org"], ["name", "Heaven Blick DDS"], ["remember_token", "99TlWbFKQHO9bGp3xHNuGg"], ["updated_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00]]
+  [1m[36m (1.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-20@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00], ["email", "example-20@myexample.org"], ["name", "Jovanny Cummerata"], ["remember_token", "foLZrS6KU1n2qLd9krIw3Q"], ["updated_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00]]
+  [1m[36m (1.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-21@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00], ["email", "example-21@myexample.org"], ["name", "Frederique Grant"], ["remember_token", "WgvAIxeaEqdBw8ks3BkEXw"], ["updated_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00]]
+  [1m[36m (8.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-22@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00], ["email", "example-22@myexample.org"], ["name", "Regan Boyer"], ["remember_token", "QgD2-4ZYqOJhsRcNMjHFkg"], ["updated_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00]]
+  [1m[36m (10.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-23@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00], ["email", "example-23@myexample.org"], ["name", "Ashley Borer"], ["remember_token", "9v0oJHeWznr_EKF6WM_frQ"], ["updated_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00]]
+  [1m[36m (25.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-24@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00], ["email", "example-24@myexample.org"], ["name", "Dan Greenholt"], ["remember_token", "0CeXiWTDSjCVM6-swSTEsg"], ["updated_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00]]
+  [1m[36m (19.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-25@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00], ["email", "example-25@myexample.org"], ["name", "Leila Barrows"], ["remember_token", "dPUlu14vStqpVFrxWK--Rw"], ["updated_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00]]
+  [1m[36m (16.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-26@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00], ["email", "example-26@myexample.org"], ["name", "Tabitha Bergnaum IV"], ["remember_token", "EAA12dTZilCQkC8ES7EiKA"], ["updated_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00]]
+  [1m[36m (16.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-27@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00], ["email", "example-27@myexample.org"], ["name", "Jerome Kuphal"], ["remember_token", "3yKV4C2fUFOYRS_LPdeweQ"], ["updated_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00]]
+  [1m[36m (17.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-28@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00], ["email", "example-28@myexample.org"], ["name", "Devyn Wisoky"], ["remember_token", "3CErEWv-xHQB1XxQCT-UqQ"], ["updated_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00]]
+  [1m[36m (16.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-29@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00], ["email", "example-29@myexample.org"], ["name", "Lorenza Goldner"], ["remember_token", "yLH7x90AQVcRSc4tmHYX9w"], ["updated_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00]]
+  [1m[36m (16.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-30@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00], ["email", "example-30@myexample.org"], ["name", "Cameron Lemke"], ["remember_token", "nCCuNniJo2WdRlri9CfXmw"], ["updated_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00]]
+  [1m[36m (16.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-31@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00], ["email", "example-31@myexample.org"], ["name", "Jevon Ratke PhD"], ["remember_token", "nFvrUxDrMla-7xG2-QpL8g"], ["updated_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00]]
+  [1m[36m (18.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-32@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00], ["email", "example-32@myexample.org"], ["name", "Miss Loren Dickinson"], ["remember_token", "fX9YzdQrL2fwG-cnu9MtQg"], ["updated_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00]]
+  [1m[36m (15.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-33@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00], ["email", "example-33@myexample.org"], ["name", "Cathryn McClure"], ["remember_token", "U41K7QaPbWuAogj54_4hKw"], ["updated_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00]]
+  [1m[36m (27.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-34@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00], ["email", "example-34@myexample.org"], ["name", "Electa VonRueden Jr."], ["remember_token", "ng6MjXnVX6LU1b1c-G5dCA"], ["updated_at", Tue, 06 Nov 2012 23:15:57 UTC +00:00]]
+  [1m[36m (24.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-35@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:58 UTC +00:00], ["email", "example-35@myexample.org"], ["name", "Chauncey Mills II"], ["remember_token", "SXvYSH4lCpqJ9Cal_pQn5g"], ["updated_at", Tue, 06 Nov 2012 23:15:58 UTC +00:00]]
+  [1m[36m (19.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-36@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:58 UTC +00:00], ["email", "example-36@myexample.org"], ["name", "Mrs. Lexus Williamson"], ["remember_token", "6y4j4zJ7SJlhbHJvSO22Lg"], ["updated_at", Tue, 06 Nov 2012 23:15:58 UTC +00:00]]
+  [1m[36m (19.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-37@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:58 UTC +00:00], ["email", "example-37@myexample.org"], ["name", "Jordy Watsica"], ["remember_token", "CMLFEsjXw9VDlz7WdlFiJA"], ["updated_at", Tue, 06 Nov 2012 23:15:58 UTC +00:00]]
+  [1m[36m (24.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-38@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:58 UTC +00:00], ["email", "example-38@myexample.org"], ["name", "Enid Grady I"], ["remember_token", "6HYkqNVpkPc6u0hIB8Jv6w"], ["updated_at", Tue, 06 Nov 2012 23:15:58 UTC +00:00]]
+  [1m[36m (27.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-39@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:58 UTC +00:00], ["email", "example-39@myexample.org"], ["name", "Mrs. Torrance Green"], ["remember_token", "reumINdNE_3CkdmGy9Au6w"], ["updated_at", Tue, 06 Nov 2012 23:15:58 UTC +00:00]]
+  [1m[36m (15.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-40@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:58 UTC +00:00], ["email", "example-40@myexample.org"], ["name", "Rylee Zemlak"], ["remember_token", "V0uCNdndNaq2ffZTebi2Ig"], ["updated_at", Tue, 06 Nov 2012 23:15:58 UTC +00:00]]
+  [1m[36m (19.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-41@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:58 UTC +00:00], ["email", "example-41@myexample.org"], ["name", "Lamont Parker"], ["remember_token", "Akl48h8kFgkK9ufF1KAs1g"], ["updated_at", Tue, 06 Nov 2012 23:15:58 UTC +00:00]]
+  [1m[36m (17.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-42@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:58 UTC +00:00], ["email", "example-42@myexample.org"], ["name", "Berneice Armstrong"], ["remember_token", "RdUO48lWLi7rKgGUTBc3Pw"], ["updated_at", Tue, 06 Nov 2012 23:15:58 UTC +00:00]]
+  [1m[36m (28.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-43@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:58 UTC +00:00], ["email", "example-43@myexample.org"], ["name", "Pearlie Kuhlman"], ["remember_token", "LPIwVpnXi_PNsTT6nVlEdQ"], ["updated_at", Tue, 06 Nov 2012 23:15:58 UTC +00:00]]
+  [1m[36m (24.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-44@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:58 UTC +00:00], ["email", "example-44@myexample.org"], ["name", "Zackary Gibson"], ["remember_token", "QLuPC7agsFJiynDOqSsOdA"], ["updated_at", Tue, 06 Nov 2012 23:15:58 UTC +00:00]]
+  [1m[36m (19.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('example-45@myexample.org') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["admin", false], ["created_at", Tue, 06 Nov 2012 23:15:58 UTC +00:00], ["email", "example-45@myexample.org"], ["name", "Lucienne Fay"], ["remember_token", "GNTcKg1ORKApJk_roUU73A"], ["updated_at", Tue, 06 Nov 2012 23:15:58 UTC +00:00]]
+  [1m[36m (14.2ms)[0m  [1mcommit transaction[0m
