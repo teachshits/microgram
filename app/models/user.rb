@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   attr_accessible :email, :name
 
+  has_many :posts, dependent: :destroy
+
   before_save { self.email.downcase }  # сохраняем емэйл в нижнем регистре перед сохранением в БД ()
   before_save :create_remember_token
 
@@ -16,6 +18,10 @@ class User < ActiveRecord::Base
   	else
   		user
   	end
+  end
+
+  def feed
+    Post.where("user_id = ?", id)
   end
 
 private
