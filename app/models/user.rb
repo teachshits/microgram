@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   end
 
   def feed
-    Post.where("user_id = ?", id)
+    Post.from_all_users(self)
   end
 
 private

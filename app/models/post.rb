@@ -11,4 +11,15 @@ class Post < ActiveRecord::Base
 
 
 default_scope :order => 'posts.created_at DESC'
+scope :from_all_users, lambda { |user| followed_by(user) }
+
+private
+
+def self.from_all_users(user)
+    all_user_ids = "SELECT id FROM users"
+    where("user_id IN (#{all_user_ids}) OR user_id = ?", 
+          user_id: user.id)
+ end
+
+
 end
